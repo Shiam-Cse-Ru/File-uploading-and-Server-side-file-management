@@ -11,20 +11,42 @@ if (isset($_POST['submit'])) {
 	$name=$_POST['name'];
 	  $date=date("Y-m-d h:i:sa");
 	if (empty($name)) {
-		$statusMsg="Please enter the album name";
+		$errmsg="Please enter the album name";
 	}
 	else{
-
+       $i=1;
       $user_id=Model::getUserIdByUserName($user_name);
-      $CreateAlbum=Model::CreateNewAlbum($name,$user_id,$date);
+      $CreateAlbum=Model::CreateNewAlbum($name,$user_id,$i,$date);
       if ($CreateAlbum) {
-      	$create="Album Create successfull";
+      $successmsg="Album Create successfull.Now Upload Photo ";
       }
       else{
 
-      	$statusMsg="Album Not Create";
+      	$errmsg="Album Not Create";
       }
-echo $user_id;
+
+	}
+}
+
+
+if (isset($_POST['private'])) {
+	$name=$_POST['name'];
+	  $date=date("Y-m-d h:i:sa");
+	if (empty($name)) {
+		$errmsg="Please enter the album name";
+	}
+	else{
+      $i=0;
+      $user_id=Model::getUserIdByUserName($user_name);
+      $CreateAlbum=Model::CreateNewAlbum($name,$user_id,$i,$date);
+      if ($CreateAlbum) {
+      	$successmsg="Album Create successfull.Now Upload Photo <a href='?controller=pages&action=upload' class='btn btn-primary'>";
+      }
+      else{
+
+      	$errmsg="Album Not Create";
+      }
+
 	}
 }
 
@@ -46,13 +68,13 @@ echo $user_id;
 	        <div class="row">
 	        <div class="col-md-8  col-md-offset-2">
 	        
-	           <?php echo !empty($create)?'<div class="flash alert-success">
-        <p class="panel-body">'.$create.'</p>
+	           <?php echo !empty($successmsg)?'<div class="flash alert-success">
+        <p class="panel-body">'.$successmsg.' <a href="?controller=pages&action=upload" class="btn btn-primary">Upload</a></p>
       </div>':''; ?>
 
 
-        <?php echo !empty($statusMsg)?'<div class="flash alert-danger">
-        <p class="panel-body">'.$statusMsg.'</p>
+        <?php echo !empty($errmsg)?'<div class="flash alert-danger">
+        <p class="panel-body">'.$errmsg.'</p>
       </div>':''; ?>
 	          <div class="jumbotron">
 
@@ -73,10 +95,14 @@ echo $user_id;
                          
 
                             <div class="form-group">
-                                <input type="submit" name="submit" class="btn btn-primary">
+                                <input type="submit" name="submit" class="btn btn-primary" value="Publish">
                                     <i class="fa fa-btn fa-sign-in"></i>
                                 </input>
-
+                                <div class="pull-right">
+                                     <input type="submit" name="private" class="btn btn-info" value="Private">
+                                    
+                                </input>
+                                </div>
                             </div>
                         </form>
                 </div>

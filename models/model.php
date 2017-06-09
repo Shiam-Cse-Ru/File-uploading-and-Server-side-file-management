@@ -119,6 +119,26 @@ $message="";
       }
   }
 
+
+ public static  function GetAllPhotosByalbumId($albumid)
+  {
+  $db = mysqli_connect("localhost", "root", "", "file_management");
+      
+       $result =mysqli_query($db,"SELECT * FROM photos WHERE album_id='$albumid' ");
+       mysqli_close($db);
+
+    
+     if (mysqli_num_rows($result) == 0) {
+        $message="There is no posts available";
+    } 
+    else {
+
+    return $result;
+    
+      }
+  }
+
+
    public static  function GetUserNameByPostId($id)
   {
     $db = mysqli_connect("localhost", "root", "", "simple_blog");
@@ -163,6 +183,42 @@ $message="";
       }
     }
 
+     public static function checkForExistingName($name)
+  {
+    // if ($name === "admin") {
+    //   return true;
+    // }
+    $db = mysqli_connect("localhost", "root", "", "file_management");
+    $sql = "SELECT name FROM `user` WHERE `name`='{$name}'";
+    $result = mysqli_query($db, $sql);
+    if(mysqli_num_rows($result) == true) {
+      mysqli_close($db);
+      return true;
+    } else {
+      mysqli_close($db);
+      return false;
+    }
+  }
+
+  public static function checkForExistingPassword($password)
+  {
+    // if ($name === "admin") {
+    //   return true;
+    // }
+    $password=md5($password);
+    $db = mysqli_connect("localhost", "root", "", "file_management");
+    $sql = "SELECT password FROM `user` WHERE `password`='{$password}'";
+    $result = mysqli_query($db, $sql);
+    if(mysqli_num_rows($result) == true) {
+      mysqli_close($db);
+      return true;
+    } else {
+      mysqli_close($db);
+      return false;
+    }
+  }
+
+
  public static function checkForExistingEmail($email)
   {
     // if ($name === "admin") {
@@ -196,11 +252,12 @@ $message="";
   }
 
 
-    public static function CreateNewAlbum($name,$user_id,$date)
+    public static function CreateNewAlbum($name,$user_id,$i,$date)
   {
-
+    
+  
     $db = mysqli_connect("localhost", "root", "", "file_management");
-    $sql = "INSERT INTO `album` (`user_id`,`album_name`,`created_date`) VALUES ('{$user_id}','{$name}','{$date}')";
+    $sql = "INSERT INTO `album` (`user_id`,`album_name`,`action`,`created_date`) VALUES ('{$user_id}','{$name}','{$i}','{$date}')";
     $result = mysqli_query($db, $sql);
     mysqli_close($db);
     if($result) {
@@ -224,10 +281,27 @@ $message="";
     }
   }
 
-   public static function getAlbumNameByUserId($user_id) {
+   public static function getAlbumNameByUserId() {
      
        $db = mysqli_connect("localhost", "root", "", "file_management");
-       $result =mysqli_query($db,"SELECT * FROM album WHERE user_id='$user_id' ");
+       $result =mysqli_query($db,"SELECT * FROM album WHERE action='1'");
+       mysqli_close($db);
+
+     if (mysqli_num_rows($result) == 0) {
+        return false;
+    } 
+    else {
+
+    return $result;
+    
+      }
+        
+    }
+
+  public static function getMyAlbumByUserId($user_id) {
+     
+       $db = mysqli_connect("localhost", "root", "", "file_management");
+       $result =mysqli_query($db,"SELECT * FROM album WHERE user_id='$user_id'");
        mysqli_close($db);
 
      if (mysqli_num_rows($result) == 0) {
@@ -243,22 +317,79 @@ $message="";
 
 
 
+  public static function DeleteAlbum($id) {
+     
+       $db = mysqli_connect("localhost", "root", "", "file_management");
+       $result =mysqli_query($db,"DELETE FROM album WHERE id='$id'");
+      
+
+     if ($result) {
+        return true;
+    } 
+    else {
+
+    return false;
+    
+      }
+        
+    }
+
+
+      public static function DeletePhoto($id) {
+     
+       $db = mysqli_connect("localhost", "root", "", "file_management");
+       $result =mysqli_query($db,"DELETE FROM album WHERE id='$id'");
+      
+
+     if ($result) {
+        return true;
+    } 
+    else {
+
+    return false;
+    
+      }
+        
+    }
+
+
     public static function GetphotoByAlbumId($albumid) {
      
        $db = mysqli_connect("localhost", "root", "", "file_management");
-       $result =mysqli_query($db,"SELECT location FROM photos WHERE album_id='$albumid' ");
+       $result =mysqli_query($db,"SELECT location FROM photos WHERE album_id='$albumid' ORDER BY id DESC");
        mysqli_close($db);
 
      if (mysqli_num_rows($result) == 0) {
         $message="There is no posts available";
     } 
     else {
+      $row=mysqli_fetch_array($result);
 
-    return $result;
+    return $row;
     
       }
         
     }
+
+
+       public static function GetUserName($userid) {
+     
+       $db = mysqli_connect("localhost", "root", "", "file_management");
+       $result =mysqli_query($db,"SELECT name FROM user WHERE id='$userid'");
+       mysqli_close($db);
+
+     if (mysqli_num_rows($result) == 0) {
+        $message="There is no posts available";
+    } 
+    else {
+      $row=mysqli_fetch_array($result);
+
+    return $row;
+    
+      }
+        
+    }
+
 
 
   public static  function getUserNameByUserEmail($email)
@@ -338,20 +469,7 @@ public static  function AddNewPhoto($albumid, $name,$location,$date)
       return 0;
     }
   }
-   public static function getUserNameByUserId($user_id)
-  {
-    $db = mysqli_connect("localhost", "root", "", "simple_blog");
-    $sql = "SELECT user_name FROM `user` WHERE `user_id`='{$user_id}'";
-    $result = mysqli_query($db, $sql);
-       if (mysqli_num_rows($result) == 0) {
-        $message="There is no posts available";
-    } 
-    else {
-     $row=mysqli_fetch_array($result);
-    return $row;
-    
-      }
-  }
+
 
   public static  function CreateNewPost($user_id, $title,$content,$description)
   {

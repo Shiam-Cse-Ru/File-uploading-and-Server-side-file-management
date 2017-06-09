@@ -8,7 +8,7 @@ if (isset($_SESSION['name'])) {
 
  
   $user_id=Model::getUserIdByUserName($user_name);
-  $album_name=Model::getAlbumNameByUserId($user_id);
+  $album_name=Model::getMyAlbumByUserId($user_id);
 
      
 
@@ -19,26 +19,67 @@ if (isset($_POST['upload'])) {
 	$date=date("Y-m-d h:i:sa");
 	
 	//image
-       $image = addslashes(file_get_contents($_FILES['image']['tmp_name']));
-       $image_name = addslashes($_FILES['image']['name']);
-       $image_size = getimagesize($_FILES['image']['tmp_name']);
+ 
+       $tmp_dir = $_FILES['image']['tmp_name'];
+       $imgFile =$_FILES['image']['name'];
+       $imgSize = $_FILES['image']['size'];
 
-       move_uploaded_file($_FILES["image"]["tmp_name"], "upload/" . $_FILES["image"]["name"]);
-       $location = "upload/" . $_FILES["image"]["name"];
-     if (empty($name) or empty($albumid)) {
-     	$errormsg="Pls fill up the all";
-     }
-     else{
+	
+	   if(empty($name)){
+			$errMSG = "Please Enter name.";
+		}
+		else if(empty($albumid)){
+			$errMSG = "Please select album name.";
+		}
+		else if(empty($imgFile)){
+			$errMSG = "Please Select Image File.";
+		}
 
-     	 	$addphoto=Model::AddNewPhoto($albumid,$name,$location,$date);
+	else
+		{
+			$upload_dir = 'upload/'; // upload directory
+	
+			$imgExt = strtolower(pathinfo($imgFile,PATHINFO_EXTENSION)); // get image extension
+		
+			// valid image extensions
+			$valid_extensions = array('jpeg', 'jpg', 'png', 'gif'); // valid extensions
+		
+			// rename uploading image
+			$userpic = rand(1000,1000000).".".$imgExt;
+				
+			// allow valid image file formats
+			if(in_array($imgExt, $valid_extensions)){			
+				// Check file size '5MB'
+				if($imgSize < 5000000)				{
+					  move_uploaded_file($_FILES["image"]["tmp_name"], "upload/" .$userpic);
+                  $location = "upload/" . $_FILES["image"]["name"];
+				}
+				else{
+					$errMSG = "Sorry, your file is too large.";
+				}
+			}
+			else{
+				$errMSG = "Sorry, only JPG, JPEG, PNG & GIF files are allowed.";		
+			}
+		}
+
+
+			if(!isset($errMSG))
+		{
+		       
+     	 	$addphoto=Model::AddNewPhoto($albumid,$name,$userpic,$date);
+
      	if ($addphoto) {
      		$successmsg="Photo Upload Successful";
      	}
      	else{
 
-     		$errormsg="Something Wrong to your photo";
-     	}
-     }
+     		$errMSG="Something Wrong to your photo";
+     	}	
+		}
+
+
+      
     
 }
 
@@ -65,8 +106,8 @@ if (isset($_POST['upload'])) {
       </div>':''; ?>
 
 
-        <?php echo !empty($errormsg)?'<div class="flash alert-danger">
-        <p class="panel-body">'.$errormsg.'</p>
+        <?php echo !empty($errMSG)?'<div class="flash alert-danger">
+        <p class="panel-body">'.$errMSG.'</p>
       </div>':''; ?>
 	          <div class="jumbotron">
 
@@ -74,7 +115,7 @@ if (isset($_POST['upload'])) {
                 <div class="panel-heading">Upload Photo</div>
                 <div class="panel-body">
         
-                        <form role="form" method="POST" action="?controller=pages&action=upload" enctype="multipart/form-data">
+                        <form role="form" method="post" enctype="multipart/form-data">
                         
 
                             <div class="form-group">

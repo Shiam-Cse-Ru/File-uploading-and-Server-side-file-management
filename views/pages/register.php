@@ -1,38 +1,50 @@
 <?php session_start(); ?>
 <?php 
 
-$message="";
+                  $errmsg="";
 
                     if (isset($_POST['submit'])) {
 
                             if (trim($_POST['name'])=='' || trim($_POST['email'])=='' || trim($_POST['password'])=='') {
-                                $message = "Please fill all the fields with valid data.";
+                                $errmsg = "Please fill all the fields with valid data.";
                             } 
 
                             else {
                                 $name = trim($_POST['name']);
                                 $email = trim($_POST['email']);
                                 $password = trim($_POST['password']);
+                               
                                 $date=date("Y-m-d h:i:sa");
+
                                 if (Model::checkForExistingEmail($email)) {
-                                    $_SESSION['registration_error'] = "<span class='error'>The provided email is unavailable. Enter a different email.</span>";
-                                      header("Location: ?controller=pages&action=register");
+                                   $errmsg="The provided email is unavailable.pls enter different email.";
                                 } 
 
+                            
                                 else {
-                                    $password = md5($password);
+                                      
+                             if (Model::checkForExistingName($name)) {
+                              $errmsg="The provided name is unavailable.pls enter different name.";
+                                }
+
+                         
+
+                                else{
+                                   
+                                       $password = md5($password);
                                     if (Model::CreateNewuser($name, $email, $password,$date)) {
                                          //$user_id = getUserIdByUserName($name);
                                          $_SESSION['email'] = $email;
-                                            header('Location: ?controller=pages&action=home');
+                                         header('Location: ?controller=pages&action=home');
 
                                     }
 
                                     else {
-              $_SESSION['registration_error'] = "<span class='error'>Unknown problem occured. Try again.</span>";
-              header("Location: ?controller=pages&action=register");
-            }
+                                  $errmsg="Unknown Problem occured.";
+              
+                                       }
                                 }
+                            }
                             }
                             
                         }
@@ -48,13 +60,10 @@ $message="";
     <?php include 'header.php'; ?>
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
-        <?php if (isset($_SESSION['registration_error'])) {
            
-         ?>
-       <div class="flash alert-danger">
-        <p class="panel-body"><?php echo $_SESSION['registration_error']; ?></p>
-      </div>
-      <?php } ?>
+      <?php echo !empty($errmsg)?'<div class="flash alert-danger">
+        <p class="panel-body">'.$errmsg.'</p>
+      </div>':''; ?>
             <div class="panel panel-info">
                 <div class="panel-heading">Register</div>
                 <div class="panel-body">
@@ -85,7 +94,7 @@ $message="";
                         
 
                             <div class="form-group">
-                                <input type="submit" name="submit" class="btn btn-primary">
+                                <input type="submit" name="submit" class="btn btn-primary" value="Register">
                                     
                                
 

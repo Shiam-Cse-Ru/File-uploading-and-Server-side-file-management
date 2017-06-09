@@ -22,7 +22,7 @@
            <?php if (isset($_SESSION['name'])) {
             
             ?>
-           <li class="active"><a href='?controller=pages&action=album'>Album</a></li>
+           <li class="active"><a href='?controller=pages&action=album'>All Albums</a></li>
                <?php } ?>
               <?php if (!isset($_SESSION['name'])) {
             
@@ -54,6 +54,7 @@
         
          <li ><a href="?controller=pages&action=create_album">Add New Album</a></li>
           <li><a href="?controller=pages&action=upload">Upload Photo</a></li>
+            <li><a href="?controller=pages&action=my_album">My Album</a></li>
           <li><a href="?controller=pages&action=logout">Log Out</a></li>
           
 

@@ -39,7 +39,7 @@
     <?php include 'header.php'; ?>
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
-       <?php if (isset($_SESSION['name'])) {
+       <?php if (isset($_SESSION['email'])) {
            
          ?>
        <div class="flash alert-success">
@@ -76,7 +76,7 @@
                             </div>
 
                             <div class="form-group">
-                                <input type="submit" name="submit" class="btn btn-primary">
+                                <input type="submit" name="submit" class="btn btn-primary" value="Login">
                                     <i class="fa fa-btn fa-sign-in"></i>
                                 </input>
 

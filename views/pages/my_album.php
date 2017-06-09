@@ -7,9 +7,13 @@ if (isset($_SESSION['name'])) {
 }
 
  
-  // $user_id=Model::getUserIdByUserName($user_name);
-  $album_name=Model::getAlbumNameByUserId();
-  
+  $user_id=Model::getUserIdByUserName($user_name);
+  $album_name=Model::getMyAlbumByUserId($user_id);
+
+     
+
+
+
  ?>
 
 <div class="container">
@@ -19,7 +23,7 @@ if (isset($_SESSION['name'])) {
 	      <div class="container wow fadeInUp">
 	        <div class="row">
 	          <div class="col-md-12">
-	            <h3 class="section-title">Photo Albums</h3>
+	            <h3 class="section-title">My Albums</h3>
 	            <div class="section-title-divider"></div>
 	          </div>
 	        </div>
@@ -38,22 +42,20 @@ if (isset($_SESSION['name'])) {
                 $albumname=$row['album_name'];
                 $created_date=$row['created_date'];
                 $userid=$row['user_id'];
-                
                 $Getphoto=Model::GetphotoByAlbumId($albumid);
                 $GetUserName=Model::GetUserName($userid);
-               
 	        	?>
 
-	          <div class="col-md-3">
-	            <a class="portfolio-item" style="background-image: url(upload/<?php echo $Getphoto['location']; ?>);" href="?controller=pages&action=view&id=<?php echo $albumid; ?>" ">
+	          <div class="col-md-3" style="text-align: center;">
+	            <a class="portfolio-item" style="background-image: url(upload/<?php echo $Getphoto['location']; ?>);" href="?controller=pages&action=my_photos&id=<?php echo $albumid; ?>" ">
 	              <div class="details">
-	              <h4>Created By: <?php echo $GetUserName[0]; ?></h4>
-	                <h4>Album Name:<?php echo $albumname; ?></h4>
-
+	              <h4><?php echo $GetUserName[0]; ?></h4>
+	                <h4><?php echo $albumname; ?></h4>
 	                <p>Created Date<br><?php echo $created_date; ?></p>
-	              
 	              </div>
-
+                 
+	               <a class="btn btn-warning" href="?controller=pages&action=delete&id=<?php echo $albumid; ?>" >Delete</a>
+                 
 	            </a>
 
 	          </div>

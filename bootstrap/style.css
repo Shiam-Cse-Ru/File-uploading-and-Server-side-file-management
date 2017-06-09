@@ -613,16 +613,16 @@ body.mobile-nav-active #mobile-nav-toggle {
   background-size: cover;
   background-repeat: no-repeat;
   position: relative;
-  height: 260px;
+  height: 220px;
   width: 100%;
   display: table;
   overflow: hidden;
   margin-bottom: 30px;
-  border-radius: 10%;
+  border-radius: 5%;
 }
 
 #portfolio .portfolio-item .details {
-  height: 260px;
+  height: 200px;
   background: #fff;
   display: table-cell;
   vertical-align: middle;
