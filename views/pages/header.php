@@ -1,24 +1,16 @@
-  
-  <div class="row">
 
-  <div class="navbar navbar-default navbar-inverse"  role="navigation">
-  
-    <div class="nav-header">
 
-      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-  
-      <span class="icon-bar"></span>
-      <span class="icon-bar"></span>
-      <span class="icon-bar"></span>
 
-      </button>
-  
-      <a href="#" class="navbar-brand">Upload Your Photo</a>
 
-    </div>
-  
-      <div class="navbar-collapse collapse">
-        <ul class="nav navbar-nav">
+  <div class="navbar navbar-inverse navbar-static-top">
+ 
+ <div class="container">
+ 
+ <a href="#" class="navbar-brand">Upload Your file</a> <button class="navbar-toggle" data-toggle="collapse" data-target=".navHeaderCollapse"></button>
+
+      <div class="collapse navbar-collapse navHeaderCollapse">
+
+       <ul class="nav navbar-nav">
            <?php if (isset($_SESSION['name'])) {
             
             ?>
@@ -66,10 +58,7 @@
         </ul>
    <?php } ?>
    
-
-
-
+   
       </div>
-
-</div>
+    </div>
   </div>

@@ -86,9 +86,9 @@ if (isset($_POST['upload'])) {
 
  ?>
 
-<div class="container">
-	
 <?php include 'header.php'; ?>
+<div class="container">
+
  <section id="portfolio">
 	      <div class="container wow fadeInUp">
 	        <div class="row">
@@ -102,11 +102,15 @@ if (isset($_POST['upload'])) {
 	        <div class="col-md-8  col-md-offset-2">
 	        
 	           <?php echo !empty($successmsg)?'<div class="flash alert-success">
+	         <a href="" class="close" data-dismiss="alert">×</a>
+
         <p class="panel-body">'.$successmsg.'</p>
       </div>':''; ?>
 
 
         <?php echo !empty($errMSG)?'<div class="flash alert-danger">
+        <a href="" class="close" data-dismiss="alert">×</a>
+
         <p class="panel-body">'.$errMSG.'</p>
       </div>':''; ?>
 	          <div class="jumbotron">
@@ -169,9 +173,5 @@ if (isset($_POST['upload'])) {
 	    </section>
 
 
-
-
-
-
-
 </div>
+<?php include 'footer.php'; ?>

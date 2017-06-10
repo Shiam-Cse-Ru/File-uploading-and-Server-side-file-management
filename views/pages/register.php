@@ -56,12 +56,15 @@
  ?>
 
 
+<?php include 'header.php'; ?>
 <div class="container">
-    <?php include 'header.php'; ?>
+    
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
            
       <?php echo !empty($errmsg)?'<div class="flash alert-danger">
+        <a href="" class="close" data-dismiss="alert">×</a>
+
         <p class="panel-body">'.$errmsg.'</p>
       </div>':''; ?>
             <div class="panel panel-info">
@@ -106,3 +109,4 @@
     </div>
 </div>
 
+<?php include 'footer.php'; ?>

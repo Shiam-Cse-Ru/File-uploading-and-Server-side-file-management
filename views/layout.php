@@ -12,8 +12,8 @@
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,700,700i|Raleway:300,400,500,700,800" rel="stylesheet"> 
   <link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.min.css">
  <link href="bootstrap/style.css" rel="stylesheet">
-      <link href="bootstrap/animate-css/animate.min.css" rel="stylesheet">
-
+    <link href="bootstrap/animate-css/animate.min.css" rel="stylesheet">
+ <link href="bootstrap/css/footer-basic-centered.css" rel="stylesheet">
   </head>
 
   <body>

@@ -34,16 +34,17 @@
 
 
 
-
+ <?php include 'header.php'; ?>
 <div class="container">
-    <?php include 'header.php'; ?>
+   
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
        <?php if (isset($_SESSION['email'])) {
            
          ?>
-       <div class="flash alert-success">
-        <p class="panel-body"><?php echo "Registration Successful.Please Login"; ?></p>
+       <div class="alert alert-success">
+      <a href="" class="close" data-dismiss="alert">×</a>
+        <p><?php echo "Registration Successful.Please Login"; ?></p>
       </div>
       <?php } ?>
             <div class="panel panel-info">
@@ -90,3 +91,4 @@
 </div>
 
 
+ <?php include 'footer.php'; ?>

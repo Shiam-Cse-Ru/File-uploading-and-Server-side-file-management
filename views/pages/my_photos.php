@@ -16,9 +16,9 @@ if (isset($_SESSION['name'])) {
 
  ?>
 
+<?php include 'header.php'; ?>
 <div class="container">
 	
-<?php include 'header.php'; ?>
  <section id="portfolio">
 	      <div class="container wow fadeInUp">
 	        <div class="row">
@@ -82,3 +82,4 @@ if (isset($_SESSION['name'])) {
 
 </div>
 
+<?php include 'footer.php'; ?>
