@@ -30,11 +30,22 @@
 
         
          </ul>
+
+    
+
          <?php if (isset($_SESSION['name'])) {
             
              $name=$_SESSION['name'];
            ?>
+
          <ul class="nav navbar-nav navbar-right">
+         <li style="padding-right: 50px;"><form class="navbar-form navbar-right" action="?controller=pages&action=album" method="post">
+                <div class="form-group">
+                  <input type="text" name="search" class="form-control" placeholder="Search" required="">
+                  <input type="submit" name="submit" value="Search" class="btn btn-primary">
+                </div>
+                
+             </form></li>
          <li class="dropdown"> 
 
           <a href="#" class="dropdown-toggle" data-toggle="dropdown"><?php 

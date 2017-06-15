@@ -47,6 +47,7 @@ if (isset($_SESSION['name'])) {
 	        	?>
 
 	          <div class="col-md-3" style="text-align: center;">
+	          <div class="panel panel-body panel-info">
 	            <a class="portfolio-item" style="background-image: url(upload/<?php echo $Getphoto['location']; ?>);" href="?controller=pages&action=my_photos&id=<?php echo $albumid; ?>" ">
 	              <div class="details">
 	              <h4><?php echo $GetUserName[0]; ?></h4>
@@ -54,12 +55,14 @@ if (isset($_SESSION['name'])) {
 	                <p>Created Date<br><?php echo $created_date; ?></p>
 	              </div>
                  
-	               <a class="btn btn-warning" href="?controller=pages&action=delete&id=<?php echo $albumid; ?>" >Delete</a>
-                 
 	            </a>
 
-	          </div>
 
+	               <a class="btn btn-warning" href="?controller=pages&action=delete&id=<?php echo $albumid; ?>" >Delete</a>
+                   <a class="btn btn-info" href="?controller=pages&action=edit_album&id=<?php echo $albumid; ?>">Edit Album</a>
+
+	          </div>
+              </div>
 	        <?php } }  else{?>
 
             

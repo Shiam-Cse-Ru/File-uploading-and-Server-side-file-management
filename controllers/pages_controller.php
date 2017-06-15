@@ -10,6 +10,11 @@
       require_once('views/pages/album.php');
     }
 
+
+  public function edit_album() {
+      
+      require_once('views/pages/edit_album.php');
+    }
      public function create_album() {
       
       require_once('views/pages/create_album.php');

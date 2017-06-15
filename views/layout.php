@@ -14,6 +14,7 @@
  <link href="bootstrap/style.css" rel="stylesheet">
     <link href="bootstrap/animate-css/animate.min.css" rel="stylesheet">
  <link href="bootstrap/css/footer-basic-centered.css" rel="stylesheet">
+
   </head>
 
   <body>

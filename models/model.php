@@ -161,11 +161,11 @@ $message="";
       }
   }
 
-    public static function find($id) {
+    public static function GetAlbumNameByAlbumId($id) {
      
-      $db = mysqli_connect("localhost", "root", "", "simple_blog");
+      $db = mysqli_connect("localhost", "root", "", "file_management");
       
-       $result =mysqli_query($db,"SELECT * FROM posts WHERE id='$id' ");
+       $result =mysqli_query($db,"SELECT album_name FROM album WHERE id='$id' ");
        mysqli_close($db);
 
      if (mysqli_num_rows($result) == 0) {
@@ -297,6 +297,26 @@ $message="";
       }
         
     }
+
+  public static function getAlbumNameByUserSearch($search) {
+     
+       $db = mysqli_connect("localhost", "root", "", "file_management");
+       $result =mysqli_query($db,"SELECT * FROM album WHERE album_name LIKE '%$search%' ");
+       mysqli_close($db);
+
+     if (mysqli_num_rows($result) == 0) {
+        return false;
+    } 
+    else {
+
+    return $result;
+    
+      }
+        
+    }
+
+
+
 
   public static function getMyAlbumByUserId($user_id) {
      
@@ -531,11 +551,11 @@ public static  function AddNewPhoto($albumid, $name,$location,$date)
         
     }
 
-    public static function UpdatePostPublish($id,$title, $content,$description)
+    public static function UpdateAlbumPublic($id,$name)
   {
-    $i=1;
-    $db = mysqli_connect("localhost", "root", "", "simple_blog");
-    $sql = "UPDATE `posts` SET `title` = '{$title}',`content` = '{$content}',`description` = '{$description}',`active` = '{$i}' WHERE `id`='{$id}'";
+   $i=1;
+    $db = mysqli_connect("localhost", "root", "", "file_management");
+    $sql = "UPDATE `album` SET `album_name` = '{$name}',`action` = '{$i}' WHERE `id`='{$id}'";
     $result = mysqli_query($db, $sql);
     mysqli_close($db);
     if($result) {
@@ -545,11 +565,11 @@ public static  function AddNewPhoto($albumid, $name,$location,$date)
     }
   }
 
-   public static function UpdatePostDraft($id,$title, $content,$description)
+   public static function UpdateAlbumPrivate($id,$name)
   {
     $i=0;
-    $db = mysqli_connect("localhost", "root", "", "simple_blog");
-    $sql = "UPDATE `posts` SET `title` = '{$title}',`content` = '{$content}',`description` = '{$description}',`active` = '{$i}' WHERE `id`='{$id}'";
+    $db = mysqli_connect("localhost", "root", "", "file_management");
+    $sql = "UPDATE `album` SET `album_name` = '{$name}',`action` = '{$i}' WHERE `id`='{$id}'";
     $result = mysqli_query($db, $sql);
     mysqli_close($db);
     if($result) {

@@ -23,7 +23,7 @@ if (isset($_SESSION['name'])) {
 	      <div class="container wow fadeInUp">
 	        <div class="row">
 	          <div class="col-md-12">
-	            <h3 class="section-title">All Photos</h3>
+	            <h3 class="section-title">My Photos</h3>
 	            <div class="section-title-divider"></div>
 	          </div>
 	        </div>
@@ -44,6 +44,7 @@ if (isset($_SESSION['name'])) {
 	        	?>
 
 	          <div class="col-md-3 text-center">
+	          <div class="panel panel-body panel-warning">
 	            <a class="portfolio-item" style="background-image: url(upload/<?php echo $url; ?>);" href="upload/<?php echo $url; ?>">
 	              <div class="details">
 	                
@@ -54,7 +55,7 @@ if (isset($_SESSION['name'])) {
 	            </a>
 
 	          </div>
-
+              </div>
 	        <?php } }   else{?>
            
     	    <div class="row">

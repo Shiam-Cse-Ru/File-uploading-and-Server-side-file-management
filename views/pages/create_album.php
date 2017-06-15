@@ -40,7 +40,7 @@ if (isset($_POST['private'])) {
       $user_id=Model::getUserIdByUserName($user_name);
       $CreateAlbum=Model::CreateNewAlbum($name,$user_id,$i,$date);
       if ($CreateAlbum) {
-      	$successmsg="Album Create successfull.Now Upload Photo <a href='?controller=pages&action=upload' class='btn btn-primary'>";
+      	$successmsg="Album Create successfull.Now Upload Photo ";
       }
       else{
 

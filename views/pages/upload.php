@@ -123,8 +123,8 @@ if (isset($_POST['upload'])) {
                         
 
                             <div class="form-group">
-                                <label class=" control-label">Photo Name</label>
-                                <input type="text" class="form-control" name="name" required="">
+                                <label class=" control-label">Photo Name/Tags</label>
+                                <input type="text" class="form-control" name="name" placeholder="Ex: birds, flower" required="">
 
                                
                             </div>
@@ -152,7 +152,7 @@ if (isset($_POST['upload'])) {
                             </div>
 
                             <div class="form-group">
-                                <input type="submit" name="upload" class="btn btn-primary">
+                                <input type="submit" name="upload" class="btn btn-primary" value="Upload">
                                     <i class="fa fa-btn fa-sign-in"></i>
                                 </input>
 
@@ -164,10 +164,7 @@ if (isset($_POST['upload'])) {
   </div>
 	        
 	          
-	          
 	            
-	           
-	          
 	        </div>
 	      </div>
 	    </section>

@@ -3,7 +3,7 @@
 
  if (isset($_POST['submit'])) {
                             if (trim($_POST['email'])=='' || trim($_POST['password'])=='') {
-                                $message = "Please fill all the fields with valid data.";
+                                $errmsg = "Please fill all the fields with valid data.";
                             } else {
                                 $email = trim($_POST['email']);
                                 $password = trim($_POST['password']);
@@ -12,8 +12,7 @@
                                 $user = Model::checkForUser($email);
 
                                 if ($user == null) {
-                                    $message = "Wrong \"email\" or \"password\". Please try again.";
-                                     echo"<script>alert('wrong username or password ')</script>";
+                                   $errmsg="Wrong username or password.";
 
                                 } else {
                                     $name=Model::getUserNameByUserEmail($email);
@@ -45,6 +44,15 @@
        <div class="alert alert-success">
       <a href="" class="close" data-dismiss="alert">×</a>
         <p><?php echo "Registration Successful.Please Login"; ?></p>
+      </div>
+      <?php } ?>
+
+      <?php if (!empty($errmsg)) {
+           
+         ?>
+       <div class="alert alert-danger">
+      <a href="" class="close" data-dismiss="alert">×</a>
+        <p><?php echo $errmsg; ?></p>
       </div>
       <?php } ?>
             <div class="panel panel-info">
