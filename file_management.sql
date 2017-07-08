@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 09, 2017 at 10:25 PM
+-- Generation Time: Jul 08, 2017 at 11:16 PM
 -- Server version: 10.1.16-MariaDB
 -- PHP Version: 7.0.9
 
@@ -42,7 +42,10 @@ INSERT INTO `album` (`id`, `user_id`, `album_name`, `action`, `created_date`) VA
 (10, 19, 'Timeline photos', 1, '2017-06-09 07:18:12'),
 (11, 19, 'profile pics', 0, '2017-06-09 07:18:33'),
 (13, 19, 'Birthday', 1, '2017-06-09 09:34:17'),
-(22, 20, 'John Smith', 1, '2017-06-09 09:51:20');
+(22, 20, 'John Smith', 1, '2017-06-09 09:51:20'),
+(23, 18, 'john photo', 1, '2017-06-10 10:19:54'),
+(24, 22, 'my photo', 1, '2017-06-11 06:50:55'),
+(25, 25, 'tour photo', 1, '2017-07-09 03:06:27');
 
 -- --------------------------------------------------------
 
@@ -72,7 +75,15 @@ INSERT INTO `photos` (`id`, `album_id`, `name`, `location`, `created_date`) VALU
 (26, 13, '12', '606199.jpg', '2017-06-09 09:36:06'),
 (27, 13, '11', '113436.jpg', '2017-06-09 09:36:17'),
 (28, 13, 'bd', '573090.jpg', '2017-06-09 09:36:38'),
-(29, 22, '123', '231055.jpg', '2017-06-09 09:54:11');
+(29, 22, '123', '231055.jpg', '2017-06-09 09:54:11'),
+(30, 23, 'john photo', '363095.jpg', '2017-06-10 10:20:24'),
+(31, 24, 'tour sundorban', '134289.jpg', '2017-06-11 06:51:36'),
+(32, 26, 'shiam photos', '847900.jpg', '2017-06-11 06:59:25'),
+(33, 28, 'sdfsddgfd', '351875.jpg', '2017-06-11 07:04:37'),
+(34, 28, 'assf', '28316.jpg', '2017-06-11 07:04:59'),
+(35, 25, 'cox''s bazar', '287578.jpg', '2017-07-09 03:11:03'),
+(36, 25, 'bandorban', '670344.jpg', '2017-07-09 03:15:28'),
+(37, 25, 'inani beach', '549279.jpg', '2017-07-09 03:16:02');
 
 -- --------------------------------------------------------
 
@@ -95,7 +106,12 @@ CREATE TABLE `user` (
 INSERT INTO `user` (`id`, `name`, `email`, `password`, `created_date`) VALUES
 (18, 'John Smith', 'john@gmail.com', '827ccb0eea8a706c4c34', '2017-06-09 06:59:28'),
 (19, 'shiam', 'shiam_cse_ru@yahoo.com', '827ccb0eea8a706c4c34', '2017-06-09 07:00:53'),
-(20, 'shilon', 'shilon@yahoo.com', '81dc9bdb52d04dc20036', '2017-06-09 07:26:53');
+(20, 'asm shiam', 'shilon@yahoo.com', '81dc9bdb52d04dc20036', '2017-06-09 07:26:53'),
+(21, 'Abdullah Al Shiam', 'shiamcse@gmail.com', '81dc9bdb52d04dc20036', '2017-06-11 06:47:29'),
+(22, 'kamal', 'shiam@yahoo.com', '81dc9bdb52d04dc20036', '2017-06-11 06:49:56'),
+(23, 'john', 'johnsmith@yahoo.com', '81dc9bdb52d04dc20036', '2017-06-11 06:55:13'),
+(24, 'asmshiam', 'asm@yahoo.com', '81dc9bdb52d04dc20036', '2017-06-11 06:58:31'),
+(25, 'Rahman', 'rahman@gmail.com', '81dc9bdb52d04dc20036', '2017-07-09 03:05:52');
 
 --
 -- Indexes for dumped tables
@@ -127,17 +143,17 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `album`
 --
 ALTER TABLE `album`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
 --
 -- AUTO_INCREMENT for table `photos`
 --
 ALTER TABLE `photos`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
 --
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

@@ -14,7 +14,8 @@
                                 $email = trim($_POST['email']);
                                 $password = trim($_POST['password']);
                                
-                                $date=date("Y-m-d h:i:sa");
+                               $date=date("Y-m-d h:i:s",strtotime('+4 hour'));
+
 
                                 if (Model::checkForExistingEmail($email)) {
                                    $errmsg="The provided email is unavailable.pls enter different email.";

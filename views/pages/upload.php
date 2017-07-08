@@ -16,7 +16,8 @@ if (isset($_POST['upload'])) {
 
 	$name=$_POST['name'];
 	$albumid=$_POST['Id'];
-	$date=date("Y-m-d h:i:sa");
+	$date=date("Y-m-d h:i:s",strtotime('+4 hour'));
+
 	
 	//image
  

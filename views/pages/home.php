@@ -76,20 +76,14 @@
                                
                             </div>
 
-                            <div class="form-group">
-                                <div class="checkbox">
-                                    <label>
-                                        <input type="checkbox" name="remember"> Remember Me
-                                    </label>
-                                </div>
-                            </div>
+                        
 
                             <div class="form-group">
                                 <input type="submit" name="submit" class="btn btn-primary" value="Login">
                                     <i class="fa fa-btn fa-sign-in"></i>
                                 </input>
 
-                                <a class="btn btn-link" href="">Forgot Your Password?</a>
+                              
                             </div>
                         </form>
                 </div>

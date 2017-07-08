@@ -2,7 +2,8 @@
 session_start();
 
 session_destroy();
-header('location: ?controller=pages&action=home');
+echo"<script>alert('You are logged out')</script>";
+echo"<script>window.open('?controller=pages&action=home','_self')</script>";
 
 
  ?>

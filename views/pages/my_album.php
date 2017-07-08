@@ -50,8 +50,8 @@ if (isset($_SESSION['name'])) {
 	          <div class="panel panel-body panel-info">
 	            <a class="portfolio-item" style="background-image: url(upload/<?php echo $Getphoto['location']; ?>);" href="?controller=pages&action=my_photos&id=<?php echo $albumid; ?>" ">
 	              <div class="details">
-	              <h4><?php echo $GetUserName[0]; ?></h4>
-	                <h4><?php echo $albumname; ?></h4>
+	              <h4>Created By: <?php echo $GetUserName[0]; ?></h4>
+	                <h4>Album Name: <?php echo $albumname; ?></h4>
 	                <p>Created Date<br><?php echo $created_date; ?></p>
 	              </div>
                  

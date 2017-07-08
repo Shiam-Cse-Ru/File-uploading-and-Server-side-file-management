@@ -9,7 +9,8 @@ if (isset($_SESSION['name'])) {
 
 if (isset($_POST['submit'])) {
 	$name=$_POST['name'];
-	  $date=date("Y-m-d h:i:sa");
+	 $date=date("Y-m-d h:i:s",strtotime('+4 hour'));
+
 	if (empty($name)) {
 		$errmsg="Please enter the album name";
 	}
