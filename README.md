@@ -1,6 +1,6 @@
 # File-uploading-Server-side-file-management
 <pre>This shows online photo album having the following criteria.</pre>
-•	User will register and login using user name and password
+•	User will register and login using user name and password<br>
 •	User can upload photos from his/her computer
 •	Each photo may have a description and tags associated with it
 •	User can organize photos in multiple albums. Albums should have a name and description and creation date.
