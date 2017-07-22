@@ -1,4 +1,5 @@
 # File-uploading-Server-side-file-management
+Academic Project
 <pre>This shows online photo album having the following criteria.</pre>
 •	User will register and login using user name and password<br>
 •	User can upload photos from his/her computer<br>
